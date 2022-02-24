@@ -1,28 +1,31 @@
-//package ma.youcode.ssagencyspring.controller;
-//
-//import ma.youcode.ssagencyspring.dao.EmployeeDao;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.ModelAttribute;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//
-//@Controller
-//@RequestMapping("/employees")
-//public class EmployeeController {
-//
-//    @RequestMapping("/login")
-//    public String showEmployee(Model theModel) {
-////        Create a employee object
-//        EmployeeDao employee = new EmployeeDao();
-////        Add employee object to the model
-//        theModel.addAttribute("employee", employee);
-//        return "login";
-//    }
-//
-//    @RequestMapping("/processLogin")
-//    public String processLogin(@ModelAttribute("employee") EmployeeDao employee) {
-//        System.out.println("employee " + employee.getFirstName() + " " + employee.getLastName());
-//        return "login-confirmation";
-//    }
-//
-//}
+package ma.youcode.ssagencyspring.controller;
+
+import ma.youcode.ssagencyspring.dao.EmployeeDao;
+import ma.youcode.ssagencyspring.entity.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/employee")
+public class EmployeeController {
+//    Injecting the DAO (this injection is possible because of the @Repository in the DaoImpl file)
+//    In summ the spring will scan for a component that implements CustomerDAO interface
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    @RequestMapping("/list")
+    public String listEmployees(Model theModel) {
+//        Getting employees from DAO
+        List<Employee> employees = employeeDao.getEmployee();
+//        Adding Employees to the model
+        theModel.addAttribute("employees", employees);
+//        returning the result
+        return "list-employees";
+    }
+
+
+}
