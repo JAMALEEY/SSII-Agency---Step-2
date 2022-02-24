@@ -6,8 +6,13 @@
 <html>
 
 <head>
-    <title>List Employees</title>
 
+    <title>List Employees</title>
+<%--    the be sure we are working with the propper app name we use ${pageContext.request.contextPath} --%>
+    <link type="text/css"
+    rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/css/listEmployees.css"
+>
 </head>
 <body>
 

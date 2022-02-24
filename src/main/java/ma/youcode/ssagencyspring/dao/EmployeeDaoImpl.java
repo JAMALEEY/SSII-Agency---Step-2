@@ -26,6 +26,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 
     @Override
+    public void addEmployee() {
+
+    }
+
+    @Override
+    public void updateEmployee() {
+
+    }
+
+    @Override
 //    Managing the session automagically
     @Transactional
     public List<Employee> getEmployee() {
