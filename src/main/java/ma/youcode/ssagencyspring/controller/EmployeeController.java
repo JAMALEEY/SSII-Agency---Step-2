@@ -19,6 +19,7 @@ public class EmployeeController {
     private EmployeeDao employeeDao;
 
 //    refactoring requestmappiing to getMapping so that we only have it through get requests by the browser
+//    if we want only on post we go for PostMapping("/list")
     @GetMapping("/list")
     public String listEmployees(Model theModel) {
 //        Getting employees from DAO
