@@ -20,6 +20,22 @@ public class EmployeeServiceImpl implements EmployeeService{
     private EmployeeDao employeeDao;
 
     @Override
+    @Transactional
+    public void saveEmployee(Employee employee) {
+        employeeDao.addEmployee(employee);
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+        employeeDao.updateEmployee(employee);
+    }
+
+    @Override
+    public void deleteEmployee(Employee employee) {
+        employeeDao.addEmployee(employee);
+    }
+
+    @Override
     //    Managing the session automagically (commit ... update session etc auto)
 
     @Transactional

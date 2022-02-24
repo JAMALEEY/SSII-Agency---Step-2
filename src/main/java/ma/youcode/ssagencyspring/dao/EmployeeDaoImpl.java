@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ import java.util.List;
 @Repository
 public class EmployeeDaoImpl implements EmployeeDao {
 
-//    session factory injection :
+    //    session factory injection :
     @Autowired
     private SessionFactory sessionFactory;
     private String firstName;
@@ -26,12 +25,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 
     @Override
-    public void addEmployee() {
+    public void addEmployee(Employee employee) {
+//        Getting current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+//        creating query to save the new employee
+        currentSession.save(employee);
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
 
     }
 
     @Override
-    public void updateEmployee() {
+    public void deleteEmployee(Employee employee) {
 
     }
 
@@ -45,7 +52,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         Query<Employee> from_employee =
                 currentSession.createQuery("from Employee", Employee.class);
 //        executing the query and getting the result list
-            List<Employee> employees = from_employee.getResultList();
+        List<Employee> employees = from_employee.getResultList();
 
 //        returning the results
         return employees;
