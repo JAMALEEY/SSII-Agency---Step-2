@@ -17,7 +17,7 @@ public class EmployeeController {
 //    Injecting the DAO (this injection is possible because of the @Repository in the DaoImpl file)
 //    In summ the spring will scan for a component that implements CustomerDAO interface
 //    @Autowired
-//    private EmployeeDao employeeDao;
+//    private EmployeeDao employeeDao;e
 //    Refactor here to enable relation with service first instead of DAO ...
     @Autowired
     private EmployeeService employeeService;
@@ -35,5 +35,12 @@ public class EmployeeController {
         return "list-employees";
     }
 
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model theModel){
+        //Create model attribute to bind form data in the jsp view
+        Employee employee = new Employee();
+        theModel.addAttribute("employee", employee);
+        return "employee-form";
+    }
 
 }
