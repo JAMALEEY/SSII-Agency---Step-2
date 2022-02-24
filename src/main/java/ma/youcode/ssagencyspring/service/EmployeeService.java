@@ -1,11 +1,9 @@
 package ma.youcode.ssagencyspring.service;
 
-//Service facade design pattern
-//basiccaly its a layer for custom business logic
-// and it integrates data from multiple sources (DAO ... REPOSITORIES ...)
+import ma.youcode.ssagencyspring.entity.Employee;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class EmployeeService {
+public interface EmployeeService {
+    public List<Employee> getEmployees();
 }

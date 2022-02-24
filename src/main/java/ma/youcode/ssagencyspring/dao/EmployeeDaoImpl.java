@@ -36,8 +36,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-//    Managing the session automagically
-    @Transactional
     public List<Employee> getEmployee() {
 
 //        getting current hibernate session
