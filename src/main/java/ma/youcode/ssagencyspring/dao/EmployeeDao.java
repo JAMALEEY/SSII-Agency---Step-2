@@ -1,33 +1,10 @@
 package ma.youcode.ssagencyspring.dao;
 
-public class EmployeeDao {
-    private String firstName;
-    private String lastName;
-    private String country;
-    public EmployeeDao() {
-    }
+import ma.youcode.ssagencyspring.entity.Employee;
+import java.util.List;
 
-    public String getFirstName() {
-        return firstName;
-    }
+public interface EmployeeDao {
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    public List<Employee> getEmployee();
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 }
