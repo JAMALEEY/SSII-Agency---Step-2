@@ -48,9 +48,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 //        getting current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 
-//        creating the query
+//        creating the query ... + BONUS SORTING BY LAST NAME ASSENDING
         Query<Employee> from_employee =
-                currentSession.createQuery("from Employee", Employee.class);
+                currentSession.createQuery("from Employee order by lastName", Employee.class);
 //        executing the query and getting the result list
         List<Employee> employees = from_employee.getResultList();
 
