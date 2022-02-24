@@ -17,7 +17,7 @@ public class TestDbServelet extends HttpServlet {
         String user = "hbstudent";
         String pass = "hbstudent";
 
-        String jdbcUrl = "jdbc:mysql://localhost:3306/hb_student_tracker";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/employee_tracker";
         String driver = "com.mysql.cj.jdbc.Driver";
 
 //        get connection to database

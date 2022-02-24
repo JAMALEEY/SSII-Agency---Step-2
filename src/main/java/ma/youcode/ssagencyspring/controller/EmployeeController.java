@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 public class EmployeeController {
 //    Injecting the DAO (this injection is possible because of the @Repository in the DaoImpl file)
 //    In summ the spring will scan for a component that implements CustomerDAO interface
