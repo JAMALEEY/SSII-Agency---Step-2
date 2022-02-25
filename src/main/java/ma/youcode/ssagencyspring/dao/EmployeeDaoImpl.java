@@ -29,7 +29,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 //        Getting current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 //        creating query to save the new employee
-        currentSession.save(employee);
+        currentSession.saveOrUpdate(employee);
     }
 
     @Override
@@ -38,9 +38,19 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void deleteEmployee(Employee employee) {
+    public void deleteEmployee(Long theId) {
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
 
+        // delete object with primary key
+        Query theQuery =
+                currentSession.createQuery("delete from Employee where id=:employeeId");
+        theQuery.setParameter("employeeId", theId);
+
+        theQuery.executeUpdate();
     }
+
+
 
     @Override
     public List<Employee> getEmployees() {

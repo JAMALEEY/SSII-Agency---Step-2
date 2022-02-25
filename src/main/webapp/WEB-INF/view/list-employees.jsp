@@ -61,6 +61,12 @@
                 <c:url var="updateLink" value="/employees/showFormForUpdate">
                     <c:param name="employeeId" value="${tempEmployee.id}"/>
                 </c:url>
+
+                <!-- construct an "delete" link with customer id -->
+                <c:url var="deleteLink" value="/employees/delete">
+                    <c:param name="employeeId" value="${tempEmployee.id}" />
+                </c:url>
+
             <tr>
                     <%-- ${...} it's a jsp expression language to call the tempEmployee elements--%>
                 <td>
@@ -78,6 +84,8 @@
                 <td>
                     <!-- display the update link -->
                     <a href="${updateLink}">Update</a>
+                    <a href="${deleteLink}"
+                       onclick="if (!(confirm('Are you sure you want to delete this employee from the lsit?'))) return false">Delete</a>
                 </td>
 
             </tr>
