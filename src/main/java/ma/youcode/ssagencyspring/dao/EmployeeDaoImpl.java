@@ -43,7 +43,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public List<Employee> getEmployee() {
+    public List<Employee> getEmployees() {
 
 //        getting current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
@@ -58,4 +58,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return employees;
     }
 //we enjected our session factory
+
+
+    @Override
+    public Employee getEmployee(Long theId) {
+
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        // now retrieve/read from database using the primary key
+        Employee theEmployee = currentSession.get(Employee.class, theId);
+
+        return theEmployee;
+    }
+
 }
