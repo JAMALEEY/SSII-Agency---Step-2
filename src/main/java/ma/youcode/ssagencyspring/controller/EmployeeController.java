@@ -15,36 +15,36 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-
 @RequestMapping("/")
 public class EmployeeController {
+//
+//    @Autowired
+//    private AdminDao adminDao;
+//    Admin theAdmin = adminDao.readAdmin(1L);
+//
+//    @RequestMapping("/")
+//    public String login(Model theModel){
+//        theModel.addAttribute("admin", theAdmin);
+//        return "login";
+//    }
+//
+//
+//
+//
+//    @RequestMapping("/checkLogin")
+//    public String checkLogin(@ModelAttribute("admin") Admin admin,
+//                             @RequestParam(required=false, name = "emailAdress") String emailAdress,
+//                             @RequestParam(required = false, name = "password") String password
+//    ) {
+//
 
-    @Autowired
-    private AdminDao adminDao;
-    Admin theAdmin = adminDao.readAdmin(1L);
-
-    @RequestMapping("/")
-    public String login(Model theModel){
-        theModel.addAttribute("admin", theAdmin);
-        return "login";
-    }
-
-
-
-
-    @RequestMapping("/checkLogin")
-    public String checkLogin(@ModelAttribute("admin") Admin admin,
-                             @RequestParam(required=false, name = "emailAdress") String emailAdress,
-                             @RequestParam(required = false, name = "password") String password
-    ) {
-
-        if ((emailAdress != null) && (password != null)) {
-            if (emailAdress.contains(theAdmin.getEmailAdress()) && password.contains(theAdmin.getPassword())) {
-                return "list-employees";
-            }
-        }
-        return "redirect:/login";
-    }
+//        if ((emailAdress != null) && (password != null)) {
+//            if (emailAdress.contains(theAdmin.getEmailAdress()) && password.contains(theAdmin.getPassword())) {
+//                return "list-employees";
+//            }
+//        }
+//        return "redirect:/login";
+//    }
 
 
 
@@ -61,8 +61,9 @@ public class EmployeeController {
 //    if we want only on post we go for PostMapping("/list")
     @GetMapping("/employees")
     public String listEmployees(Model theModel) {
-//        Getting employees from DAO
+//        Getting employees from service
         List<Employee> employees = employeeService.getEmployees();
+
 //        Adding Employees to the model
         theModel.addAttribute("employees", employees);
 //        returning the result

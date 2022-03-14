@@ -8,6 +8,6 @@
     <title>Employee Management System - JEE</title>
 </head>
 <body>
-The employee that logged in is : ${employee.firstName} ${employee.lastName}
+The admin that logged in is : ${admin.emailAdress}
 </body>
 </html>!

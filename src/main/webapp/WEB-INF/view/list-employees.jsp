@@ -21,6 +21,9 @@
         <h2>
             EMS - EMPLOYEES MANAGEMENT SYSTEM
         </h2>
+        <h1>
+            Welcome : ${admin.emailAdress}
+        </h1>
     </div>
 </div>
 

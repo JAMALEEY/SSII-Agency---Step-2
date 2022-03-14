@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -14,23 +15,23 @@
     <div class="background"></div>
 </div>
 
-<form id="accesspanel" action="<%=request.getContextPath()%>/checkLogin" modelAttribute="admin" method="post">
+<form:form id="accesspanel" action="checkLogin" modelAttribute="admin" method="post">
     <h1 id="litheader">JEE</h1>
     <div class="inset">
         <p>
-            <input type="text" name="emailAdress" id="emailAdress" placeholder="Email address">
+            <form:input type="text" path="emailAdress" id="emailAdress" placeholder="Email address" />
         </p>
         <p>
-            <input type="password" name="password" id="password" placeholder="Access code">
+            <form:input type="password" path="password" id="password" placeholder="Access code" />
         </p>
 
     </div>
     <p class="p-container">
-        <input type="submit" name="Login" id="go" value="Authorize"
+        <input type="submit" name="Login" id="go" value="Authorize"/>
         <%-- On click we call the spring checklogin controller mapping--%>
-        onclick="window.location.href='checkLogin'; return false;" >
+<%--        onclick="window.location.href='checkLogin'; return false;" >--%>
     </p>
-</form>
+</form:form>
 
 </body>
 </html>!
