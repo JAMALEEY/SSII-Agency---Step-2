@@ -27,8 +27,10 @@
     </div>
 </div>
 
+
 <div id="container">
     <div id="content">
+        <div class="btns">
         <!-- put new button: Add Customer -->
 
         <input type="button" value="Add a new employee."
@@ -36,6 +38,11 @@
                onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button"
         />
+        <input type="button" value="Logout." class="logout-btn"
+               onclick="window.location.href='logout'; return false;"
+        />
+
+        </div>
 
         <!--  add our html table here -->
         <table>

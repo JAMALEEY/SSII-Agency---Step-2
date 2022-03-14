@@ -38,6 +38,14 @@ public class AdminDaoImpl implements AdminDao {
         return theAdmin;
     }
 
+    @Transactional
+    @Override
+    public void logout() {
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+
+    }
+
     @Override
     public void createEmployee(Employee employee) {
 

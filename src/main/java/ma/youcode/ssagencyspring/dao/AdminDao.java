@@ -2,11 +2,14 @@ package ma.youcode.ssagencyspring.dao;
 
 import ma.youcode.ssagencyspring.entity.Admin;
 import ma.youcode.ssagencyspring.entity.Employee;
+
+import java.awt.image.VolatileImage;
 import java.util.List;
 
 public interface AdminDao {
 
     public Admin readAdmin (Long theId);
+    public void logout();
     public void createEmployee(Employee employee);
     public List<Employee> readEmployees();
     public void update(Employee employee);

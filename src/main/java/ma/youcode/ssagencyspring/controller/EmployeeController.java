@@ -85,23 +85,25 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
-    @GetMapping("/showFormForUpdate")
+    @GetMapping("/employees/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("employeeId") Long theId,
                                     Model theModel) {
 
-        // get the customer from our service
+        // get the employee from our service
         Employee employee = employeeService.getEmployee(theId);
 
-        // set customer as a model attribute to pre-populate the form
+        // set employee as a model attribute to pre-populate the form
         theModel.addAttribute("employee", employee);
 
         // send over to our form
         return "employee-form";
     }
 
-    @GetMapping("/delete")
-    public String deleteEmployee(@RequestParam("employeeId") Long theId) {
 
+
+    @GetMapping("/employees/delete")
+    public String deleteEmployee(@RequestParam("employeeId") Long theId) {
+        System.out.println("hada hwa: " + theId);
         // delete the customer
         employeeService.deleteEmployee(theId);
 

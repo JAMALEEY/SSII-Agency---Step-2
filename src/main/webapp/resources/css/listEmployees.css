@@ -4,6 +4,7 @@ html, body{
     font-family:Verdana, Arial, Helvetica, sans-serif;
 }
 
+
 table {
     border-collapse:collapse;
     border-bottom:1px solid gray;
@@ -13,7 +14,7 @@ table {
 
 th {
     border-bottom:1px solid gray;
-    background:none repeat scroll 0 0 #09c332;
+    background:none repeat scroll 0 0 #c30909;
     padding:10px;
     color: #FFFFFF;
 }
@@ -27,7 +28,8 @@ tr:nth-child(even) {background: #FFFFFF}
 tr:nth-child(odd) {background: #BBBBBB}
 
 #wrapper {width: 100%; margin-top: 0px; }
-#header {width: 70%; background: #09c332; margin-top: 0px; padding:15px 0px 15px 15px;}
+#header {width: 70%; background: #09c332; margin-top: 0px; padding:15px 0px 15px 15px;
+    }
 #header h2 {width: 100%; margin:auto; color: #FFFFFF;}
 #container {width: 100%; margin:auto}
 #container h3 {color: #000;}
@@ -39,9 +41,33 @@ tr:nth-child(odd) {background: #BBBBBB}
     padding: 4px;
     font-size: 12px;
     font-weight: bold;
-    width: 120px;
+    width: 163px;
     padding: 5px 10px;
 
     margin-bottom: 15px;
     background: #cccccc;
+}
+
+.logout-btn{
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 120px;
+    padding: 5px 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #cccccc;
+
+    margin: 20px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.btns{
+    display: flex;
+    width: 72%;
+    flex-direction: row;
+    justify-content: space-between;
 }
