@@ -85,6 +85,15 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
+    @RequestMapping("/employees/updateEmployee")
+//    public  String updateEmployee(Employee employee){
+public  String updateEmployee(Employee employee){
+
+// save the employee using EmployeeService that is relating on employeeDao
+        employeeService.updateEmployee(employee);
+        return "redirect:/employees";
+    }
+
     @GetMapping("/employees/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("employeeId") Long theId,
                                     Model theModel) {
@@ -96,7 +105,7 @@ public class EmployeeController {
         theModel.addAttribute("employee", employee);
 
         // send over to our form
-        return "employee-form";
+        return "employee-form-update";
     }
 
 

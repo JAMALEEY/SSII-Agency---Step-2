@@ -29,12 +29,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 //        Getting current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 //        creating query to save the new employee
-        currentSession.saveOrUpdate(employee);
+        currentSession.save(employee);
     }
 
     @Override
     public void updateEmployee(Employee employee) {
+//        Getting current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
 
+//        currentSession.saveOrUpdate(employee);
+        currentSession.merge(employee);
     }
 
     @Override
