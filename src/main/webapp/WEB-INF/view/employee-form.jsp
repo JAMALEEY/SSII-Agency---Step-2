@@ -57,7 +57,7 @@
 
 	</form:form>
 
-	<div style="clear; both;"></div>
+	<div style="clear: both;"></div>
 
 	<p>
 		<a href="${pageContext.request.contextPath}/employees/list">Back to Employee List</a>
@@ -68,13 +68,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-

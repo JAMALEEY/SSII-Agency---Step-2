@@ -1,6 +1,8 @@
 package ma.youcode.ssagencyspring.controller;
 
+import ma.youcode.ssagencyspring.dao.AdminDao;
 import ma.youcode.ssagencyspring.dao.EmployeeDao;
+import ma.youcode.ssagencyspring.entity.Admin;
 import ma.youcode.ssagencyspring.entity.Employee;
 import ma.youcode.ssagencyspring.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +10,48 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping("/employees")
+
+@RequestMapping("/")
 public class EmployeeController {
+
+    @Autowired
+    private AdminDao adminDao;
+    Admin theAdmin = adminDao.readAdmin(1L);
+
+    @RequestMapping("/")
+    public String login(Model theModel){
+        theModel.addAttribute("admin", theAdmin);
+        return "login";
+    }
+
+
+
+
+    @RequestMapping("/checkLogin")
+    public String checkLogin(@ModelAttribute("admin") Admin admin,
+                             @RequestParam(required=false, name = "emailAdress") String emailAdress,
+                             @RequestParam(required = false, name = "password") String password
+    ) {
+
+        if ((emailAdress != null) && (password != null)) {
+            if (emailAdress.contains(theAdmin.getEmailAdress()) && password.contains(theAdmin.getPassword())) {
+                return "list-employees";
+            }
+        }
+        return "redirect:/login";
+    }
+
+
+
 //    Injecting the DAO (this injection is possible because of the @Repository in the DaoImpl file)
 //    In summ the spring will scan for a component that implements CustomerDAO interface
 //    @Autowired
-//    private EmployeeDao employeeDao;e
+//    private EmployeeDao employeeDao;
 //    Refactor here to enable relation with service first instead of DAO ...
     @Autowired
     private EmployeeService employeeService;
@@ -24,7 +59,7 @@ public class EmployeeController {
 
 //    refactoring requestmappiing to getMapping so that we only have it through get requests by the browser
 //    if we want only on post we go for PostMapping("/list")
-    @GetMapping("/list")
+    @GetMapping("/employees")
     public String listEmployees(Model theModel) {
 //        Getting employees from DAO
         List<Employee> employees = employeeService.getEmployees();
@@ -46,7 +81,7 @@ public class EmployeeController {
     public  String saveEmployee(@ModelAttribute("employee") Employee employee){
 // save the employee using EmployeeService that is relating on employeeDao
         employeeService.saveEmployee(employee);
-        return "redirect:/employees/list";
+        return "redirect:/employees";
     }
 
     @GetMapping("/showFormForUpdate")
@@ -69,7 +104,7 @@ public class EmployeeController {
         // delete the customer
         employeeService.deleteEmployee(theId);
 
-        return "redirect:/employees/list";
+        return "redirect:/employees";
     }
 
 }

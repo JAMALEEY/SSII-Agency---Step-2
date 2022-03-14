@@ -1,1 +1,1 @@
-<% response.sendRedirect("employees/list"); %>
+<% response.sendRedirect("/employees"); %>
