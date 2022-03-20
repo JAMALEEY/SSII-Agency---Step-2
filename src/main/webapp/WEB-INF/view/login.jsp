@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,25 +12,23 @@
 </head>
 <body>
 
+
+
+<div:div id="errorLoginHandle" modelAttribute="error" >
+${error}
+</div:div>
 <div class="background-wrap">
     <div class="background"></div>
 </div>
 
 <form:form id="accesspanel" action="checkLogin" modelAttribute="admin" method="post">
-    <h1 id="litheader">JEE</h1>
+    <h1 id="litheader">Employee Management System</h1>
     <div class="inset">
         <p>
             <form:input type="text" path="emailAdress" id="emailAdress" placeholder="Email address" />
-            <form:errors path="emailAdress" cssClass="eroor" />
-            <i>
-                TEST
-            </i>
-
         </p>
         <p>
             <form:input type="password" path="password" id="password" placeholder="Access code" />
-            <form:errors path="password" cssClass="eroor" />
-
         </p>
 
     </div>
@@ -41,4 +40,4 @@
 </form:form>
 
 </body>
-</html>!
+</html>

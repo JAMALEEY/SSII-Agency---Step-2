@@ -1,5 +1,6 @@
 package ma.youcode.ssagencyspring.config.Initializer;
 
+import ma.youcode.ssagencyspring.middleware.CustomFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -28,4 +29,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceHandler("/**")
                 .addResourceLocations("/resources/");
     }
+
+
+
 }
+

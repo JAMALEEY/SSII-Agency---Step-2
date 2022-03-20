@@ -6,16 +6,16 @@ import ma.youcode.ssagencyspring.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import sun.jvm.hotspot.runtime.posix.POSIXSignals;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/")
@@ -33,50 +33,36 @@ public class HomeController {
     }
 
     @PostMapping("/checkLogin")
-    public String checkLogin(@Valid @ModelAttribute("admin") Admin admin,
-                             @RequestParam(required = false, name = "emailAdress") String emailAdress,
-                             @RequestParam(required = false, name = "password") String password,
-                             BindingResult theBindingResult
-
-    ) {
+        public ModelAndView checkLogin(@ModelAttribute("admin") Admin admin,
+                                       HttpServletRequest request,
+                                       Model loginModel,
+                                       @RequestParam(required = false, name = "emailAdress") String emailAdress,
+                                       @RequestParam(required = false, name = "password") String password
+    ) throws IOException {
         Admin myAdmin = adminDao.readAdmin(1L);
-//        String emailAdress = myAdmin.getEmailAdress();
-//        String password = myAdmin.getPassword();
-
-        System.out.println("admin email =  " + myAdmin.getEmailAdress() + " " + myAdmin.getPassword());
         if ((emailAdress != null) && (password != null)) {
-            if (
-                            emailAdress.contains(myAdmin.getEmailAdress()) &&
-                            password.contains(myAdmin.getPassword())
-            ) {
-                return "redirect:/employees";
-            } else if(theBindingResult.hasErrors()){
-                return "login";
+            if (emailAdress.contains(myAdmin.getEmailAdress()) && password.contains(myAdmin.getPassword())) {
+                HttpSession mySession = request.getSession();
+                mySession.setAttribute("adminId", myAdmin.getId());
+                return new ModelAndView("redirect:/employees");
+            } else {
+                loginModel.addAttribute("error", "Sorry, admin not found try again");
+                return new ModelAndView("login");
             }
 
         }
-        return "redirect:/";
+        return null;
     }
 
     @RequestMapping("/logout")
-    public String logout(HttpServletRequest request) {
+        public String logout(HttpServletRequest request){
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
         }
         return "redirect:/";
     }
-//        return "login";
 
-//    public String processLogin(@ModelAttribute("admin") Admin admin,
-//                                   @RequestParam(required=false, name = "emailAdress") String emailAdress,
-//                                   @RequestParam(required = false, name = "password") String password
-//    ) {
-//        admin.setEmailAdress(emailAdress);
-//        admin.setPassword(password);
-//            System.out.println("admin email =  " + admin.getEmailAdress() + " " + admin.getPassword());
-//        return "login";
-//    }
 
 
 }

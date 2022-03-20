@@ -36,7 +36,7 @@
 			<br>
 			<br>
 			<tr>
-				<td><label>First name (*):</label></td>
+				<td><label>(*) First name:</label></td>
 				<td><form:input path="firstName" />
 					<form:errors path="firstName" cssClass="eroor" />
 				</td>
