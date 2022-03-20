@@ -37,8 +37,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 //        Getting current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 
-//        currentSession.saveOrUpdate(employee);
         currentSession.merge(employee);
+
+//        currentSession.saveOrUpdate(employee);
+//        Query theQuery =
+//                currentSession.createQuery("update Employee s set firstName =: firstName where s.id=: employeeId");
+//        theQuery.setParameter("firstName", employee.getFirstName());
+//
+//        theQuery.executeUpdate();
     }
 
     @Override
@@ -46,9 +52,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 
-        // delete object with primary key
         Query theQuery =
-                currentSession.createQuery("delete from Employee where id=:employeeId");
+                currentSession.createQuery(
+                        "delete from Employee where id=:employeeId"
+                );
         theQuery.setParameter("employeeId", theId);
 
         theQuery.executeUpdate();

@@ -30,6 +30,10 @@ tr:nth-child(odd) {background: #BBBBBB}
 #wrapper {width: 100%; margin-top: 0px; }
 #header {width: 70%; background: #09c332; margin-top: 0px; padding:15px 0px 15px 15px;
     }
+.eroor {
+    color: red;
+    font-weight: bold;
+}
 #header h2 {width: 100%; margin:auto; color: #FFFFFF;}
 #container {width: 100%; margin:auto}
 #container h3 {color: #000;}
@@ -71,3 +75,4 @@ tr:nth-child(odd) {background: #BBBBBB}
     flex-direction: row;
     justify-content: space-between;
 }
+

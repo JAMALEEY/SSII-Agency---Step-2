@@ -20,9 +20,16 @@
     <div class="inset">
         <p>
             <form:input type="text" path="emailAdress" id="emailAdress" placeholder="Email address" />
+            <form:errors path="emailAdress" cssClass="eroor" />
+            <i>
+                TEST
+            </i>
+
         </p>
         <p>
             <form:input type="password" path="password" id="password" placeholder="Access code" />
+            <form:errors path="password" cssClass="eroor" />
+
         </p>
 
     </div>

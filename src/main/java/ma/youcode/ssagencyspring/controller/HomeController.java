@@ -6,6 +6,7 @@ import ma.youcode.ssagencyspring.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import sun.jvm.hotspot.runtime.posix.POSIXSignals;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")
@@ -31,18 +33,25 @@ public class HomeController {
     }
 
     @PostMapping("/checkLogin")
-        public String checkLogin(@ModelAttribute("admin") Admin admin,
-                                 @RequestParam(required = false, name = "emailAdress") String emailAdress,
-                                 @RequestParam(required = false, name = "password") String password
-    ){
+    public String checkLogin(@Valid @ModelAttribute("admin") Admin admin,
+                             @RequestParam(required = false, name = "emailAdress") String emailAdress,
+                             @RequestParam(required = false, name = "password") String password,
+                             BindingResult theBindingResult
+
+    ) {
         Admin myAdmin = adminDao.readAdmin(1L);
 //        String emailAdress = myAdmin.getEmailAdress();
 //        String password = myAdmin.getPassword();
 
         System.out.println("admin email =  " + myAdmin.getEmailAdress() + " " + myAdmin.getPassword());
-                if ((emailAdress != null) && (password != null)) {
-            if (emailAdress.contains(myAdmin.getEmailAdress()) && password.contains(myAdmin.getPassword())) {
+        if ((emailAdress != null) && (password != null)) {
+            if (
+                            emailAdress.contains(myAdmin.getEmailAdress()) &&
+                            password.contains(myAdmin.getPassword())
+            ) {
                 return "redirect:/employees";
+            } else if(theBindingResult.hasErrors()){
+                return "login";
             }
 
         }
@@ -50,7 +59,7 @@ public class HomeController {
     }
 
     @RequestMapping("/logout")
-        public String logout(HttpServletRequest request){
+    public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();

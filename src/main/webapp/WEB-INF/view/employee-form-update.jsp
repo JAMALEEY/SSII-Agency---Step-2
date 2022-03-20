@@ -26,10 +26,13 @@
 <div id="container">
     <h3>Update Employee</h3>
 
-    <form:form action="/employees/updateEmployee" modelAttribute="employee" method="POST">
+    <form:form action="/employees/updateEmployee" modelAttribute="employee" method="GET">
 
         <table>
             <tbody>
+            <tr>
+                <td><form:input type="hidden" path="id" /></td>
+            </tr>
             <tr>
                 <td><label>First name:</label></td>
                 <td><form:input path="firstName" /></td>

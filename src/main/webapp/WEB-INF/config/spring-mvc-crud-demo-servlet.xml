@@ -56,8 +56,6 @@
 
 			</props>
 		</property>
-
-
 	</bean>
 
 	<!-- Step 3: Setup Hibernate transaction manager -->

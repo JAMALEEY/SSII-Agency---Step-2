@@ -1,6 +1,7 @@
 package ma.youcode.ssagencyspring.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 //in this entity I map the employee java class to the employee table in db
 
@@ -11,9 +12,13 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "emailAdress")
+    @Size(min = 1, message = "WRONG DATA ")
     private String emailAdress;
+
     @Column(name = "password")
+    @Size(min = 1, message = "WRONG DATA ")
     private String password;
 
 

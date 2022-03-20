@@ -1,6 +1,9 @@
 package ma.youcode.ssagencyspring.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 //in this entity I map the employee java class to the employee table in db
 
@@ -11,11 +14,23 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "firstName")
+    @Pattern(regexp="^[A-Za-z]{3,25}$",message="First name couldn't have numbers or special characters... ")
+    @NotNull(message = "this field is blank, fill the form please")
+    @Size(min = 1, message = "this field is required ")
     private String firstName;
+
     @Column(name = "lastName")
+    @Pattern(regexp="^[A-Za-z]{3,25}$",message="Last name couldn't have numbers or special characters... ")
+    @NotNull(message = "this field is blank, fill the form please")
+    @Size(min = 1, message = "this field is required ")
     private String lastName;
+
     @Column(name = "email")
+    @NotNull(message = "this field is blank, fill the form please")
+    @Pattern(regexp="^[A-Za-z0-9+_.-]+@(.+)$",message="E-mail error: xyz@example.com (special characters are not allowed except '-' '_' and '.' )")
+    @Size(min = 1, message = "this field is required ")
     private String email;
 
 

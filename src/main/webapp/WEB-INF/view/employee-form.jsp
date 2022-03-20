@@ -30,19 +30,30 @@
 
 		<table>
 			<tbody>
+			<i>
+				Inputs with marked with * are required.
+			</i>
+			<br>
+			<br>
 			<tr>
-				<td><label>First name:</label></td>
-				<td><form:input path="firstName" /></td>
+				<td><label>First name (*):</label></td>
+				<td><form:input path="firstName" />
+					<form:errors path="firstName" cssClass="eroor" />
+				</td>
 			</tr>
 
 			<tr>
-				<td><label>Last name:</label></td>
-				<td><form:input path="lastName" /></td>
+				<td><label>Last name (*):</label></td>
+				<td><form:input path="lastName" />
+					<form:errors path="lastName" cssClass="eroor" />
+				</td>
 			</tr>
 
 			<tr>
-				<td><label>Email:</label></td>
-				<td><form:input path="email" /></td>
+				<td><label>Email (*):</label></td>
+				<td><form:input path="email" />
+					<form:errors path="email" cssClass="eroor" />
+				</td>
 			</tr>
 
 			<tr>
