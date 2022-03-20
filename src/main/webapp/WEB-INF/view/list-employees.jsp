@@ -22,7 +22,7 @@
             EMS - EMPLOYEES MANAGEMENT SYSTEM
         </h2>
         <h1>
-            Welcome : ${admin.emailAdress}
+            Welcome back : ${theAdmin}
         </h1>
     </div>
 </div>

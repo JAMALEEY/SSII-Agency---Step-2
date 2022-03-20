@@ -44,6 +44,7 @@ public class HomeController {
             if (emailAdress.contains(myAdmin.getEmailAdress()) && password.contains(myAdmin.getPassword())) {
                 HttpSession mySession = request.getSession();
                 mySession.setAttribute("adminId", myAdmin.getId());
+                mySession.setAttribute("theAdmin", myAdmin.getEmailAdress());
                 return new ModelAndView("redirect:/employees");
             } else {
                 loginModel.addAttribute("error", "Sorry, admin not found try again");

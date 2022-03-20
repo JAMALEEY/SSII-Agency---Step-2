@@ -1,30 +1,44 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!doctype html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome Page</title>
+    <link rel="stylesheet" href="../../resources/css/login.css">
+
+    <meta charset="ISO-8859-1">
+    <title>Employee Management System - JEE</title>
 </head>
 <body>
-<h1> Loading ... </h1>
-<form:form action="processForm" modelAttribute="employee">
 
-    First name: <form:input path="firstName" />
+<div class="background-wrap">
+    <div class="background"></div>
 
-    <br><br>
+</div>
+<h1>
+    dazda
+</h1>
+<form:form id="accesspanel" action="checkLogin" modelAttribute="admin" method="post">
+    <h1 id="litheader">JEE</h1>
+    <div class="inset">
+        <p>
+            <i id="nofound" > Error admin not found (Email and/or password incorrect) </i>
+            <form:input type="text" path="emailAdress" id="emailAdress" placeholder="Email address" />
+        </p>
+        <p>
 
-    Last name (*): <form:input path="lastName" />
-    <form:errors path="lastName" cssClass="error" />
+            <form:input type="password" path="password" id="password" placeholder="Access code" />
+        </p>
 
-    <br><br>
-
-    <input type="submit" value="Submit" />
-
+    </div>
+    <p class="p-container">
+        <input type="submit" name="Login" id="go" value="Authorize"/>
+            <%-- On click we call the spring checklogin controller mapping--%>
+            <%--        onclick="window.location.href='checkLogin'; return false;" >--%>
+    </p>
 </form:form>
-<meta http-equiv="Refresh" content="1;url=/login">
 
+<meta http-equiv="Refresh" content="2;url=/">
 </body>
 </html>
